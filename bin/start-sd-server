@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# Wrapper: start-sd-server -> scripts/08_start_sd_server.sh
+set -euo pipefail
+SELF="$(readlink -f "${BASH_SOURCE[0]}")"
+exec "$(dirname "$SELF")/../scripts/08_start_sd_server.sh" "$@"

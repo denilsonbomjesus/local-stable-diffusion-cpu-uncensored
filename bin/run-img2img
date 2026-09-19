@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# Wrapper: run-img2img -> scripts/07_img2img.sh
+set -euo pipefail
+SELF="$(readlink -f "${BASH_SOURCE[0]}")"
+exec "$(dirname "$SELF")/../scripts/07_img2img.sh" "$@"
