@@ -20,7 +20,7 @@ Não requer GPU: roda 100% em CPU, quantizado em GGUF `q5_0`.
 local-stable-diffusion-cpu-uncensored/
 ├── bin/                          # wrappers committados (caminho resolvido em runtime)
 ├── config/                       # env.example (env.local é gitignored)
-├── docs/                         # VENDORING.md
+├── docs/                         # VENDORING.md e exemplos (docs/examples/)
 ├── models/                       # (gitignored) checkpoints e GGUF
 │   └── inputs/                   # (gitignored) imagens de entrada p/ img2img/inpainting
 ├── outputs/                      # (gitignored) imagens geradas
@@ -103,6 +103,47 @@ systemctl --user start sd-server.service
 
 O script 09 **gera** a unidade com o caminho absoluto deste clone (`$REPO_ROOT`),
 então funciona em qualquer diretório de instalação.
+
+## Exemplo de resultado (txt2img)
+
+Imagem gerada com o comando do [txt2img](#txt2img-05), usando os **defaults dos
+scripts** (nenhum ajuste além do prompt):
+
+![Retrato fotorrealista gerado pelo txt2img em CPU](docs/examples/txt2img-20260530-193223.png)
+
+**Comando:**
+
+```bash
+scripts/05_txt2img.sh \
+  "portrait photo of a person, realistic skin, natural light, detailed face" \
+  "blurry, deformed, extra fingers, bad hands, low quality"
+```
+
+**Configurações da geração** (defaults de `scripts/lib/common.sh`):
+
+| Parâmetro | Valor |
+|---|---|
+| Modelo | `CyberRealistic_V8_q5_0.gguf` |
+| Resolução | 512 × 768 |
+| Steps | 24 |
+| CFG Scale | 7 |
+| Sampler | `euler_a` (padrão do upstream para SD 1.5) |
+| Scheduler | `discrete` (padrão) |
+| Threads | 12 (`nproc`) |
+| **Tempo total** | **~22 minutos** |
+
+**Hardware de referência** (notebook, sem GPU):
+
+| Componente | Especificação |
+|---|---|
+| CPU | Intel Core i5-1235U (12ª gen, 6 cores / 12 threads) |
+| RAM | 8 GB |
+| SO | Windows 11 + WSL2 (Ubuntu LTS) |
+| Aceleração | Nenhuma — 100% CPU |
+
+> O tempo de geração varia com a CPU: em desktops com mais cache e largura de
+> banda de memória, tende a ser bem menor. A quantização `q5_0` foi escolhida
+> justamente para caber com folga em máquinas de 8 GB de RAM como esta.
 
 ## Parâmetros por ambiente
 
