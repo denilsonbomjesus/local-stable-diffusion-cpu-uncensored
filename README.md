@@ -1,5 +1,9 @@
 # local-stable-diffusion-cpu-uncensored
 
+![Licença MIT](https://img.shields.io/badge/licença-MIT-green)
+![Plataforma](https://img.shields.io/badge/plataforma-Linux%20%2F%20WSL2-blue)
+![CPU Only](https://img.shields.io/badge/GPU-nenhuma%20(100%25%20CPU)-orange)
+
 Stack local enxuta para **geração e edição de imagens em CPU** com o modelo
 **CyberRealistic V8** (sem filtro de segurança) via
 [stable-diffusion.cpp](https://github.com/leejet/stable-diffusion.cpp), com foco
