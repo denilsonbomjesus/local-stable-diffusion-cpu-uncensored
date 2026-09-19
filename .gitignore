@@ -1,0 +1,28 @@
+# Build e binários compilados
+vendor/stable-diffusion.cpp/build/
+
+# Modelos pesados (nunca versionar)
+models/*.safetensors
+models/*.gguf
+models/*.ckpt
+models/*.bin
+
+# Entradas e saídas de usuário (mantém .gitkeep)
+models/inputs/*
+!models/inputs/.gitkeep
+outputs/*
+!outputs/.gitkeep
+
+# Logs
+logs/
+*.log
+
+# Config local com segredos/preferências
+config/env.local
+
+# Documento pessoal de workflow de commits (não vai para o repositório)
+docs/REGRAS-DE-COMMIT.md
+
+# Arquivos do sistema
+.DS_Store
+Thumbs.db
